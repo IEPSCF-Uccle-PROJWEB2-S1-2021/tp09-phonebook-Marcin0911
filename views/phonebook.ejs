@@ -1,0 +1,98 @@
+<%- include('header'); -%>
+<div class="container">
+  <h1><%= title %></h1>
+  <div class="row">
+      <p>List of entries inside of the phonebook</p>
+  </div>
+    <table class=" table d-none" id="phonebook-table">
+      <thead>
+        <tr>
+          <th scope="column">Last Name</th>
+          <th scope="column">First Name</th>
+          <th scope="column">Birth Date</th>
+          <th scope="column">Phone Number</th>
+          <th scope="column">Email Address</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="alert alert-danger d-none" role="alert" id="loading-alert">
+      Cannot load the list of entries in the phonebook.
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">New entry to the phonebook</h2>
+    <div class="alert alert-danger d-none" role="alert" id="sending-failure">
+      Could not create this new entry.
+    </div>
+    <form class="needs-validation" novalidate id="entry-form">
+      <div class="mb-3">
+        <label for="lastNameInput" class="form-label">Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          required
+          minlength="3"
+          placeholder="Gutmanski"
+          id="lastNameInput"
+          class="form-control"
+        />
+        <div class="invalid-feedback">Last Name is required</div>
+      </div>
+      <div class="mb-3">
+        <label for="firstNameInput" class="form-label">First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          required
+          minlength="3"
+          placeholder="Marcin"
+          id="firstNameInput"
+          class="form-control"
+        />
+        <div class="invalid-feedback">First Name is required</div>
+      </div>
+      <div class="mb-3">
+        <label for="birthDate" class="form-label">Birth Date</label>
+        <input
+          type="date"
+          name="birthDate"
+          min="1900-01-01"
+          placeholder="1900-01-01"
+          id="birthDateInput"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input
+          type="tel"
+          name="phoneNumber"
+          placeholder="+32482651486"
+          id="phoneNumberInput"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="emailAddress" class="form-label">Email Address</label>
+        <input
+          type="email"
+          name="emailAddress"
+          placeholder="guma0911@gmail.com"
+          id="emailAddressInput"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="reset" class="btn btn-outline-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<script src="/scripts/phonebook-script.js" defer></script>
+<p>This html code was heavily inspired from demo-ajax made by ROLAND François.</p>
+<%- include('footer') -%>
