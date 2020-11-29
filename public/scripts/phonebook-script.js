@@ -5,12 +5,12 @@ const REQUEST_TIMEOUT = 10000;
 const phonebookTable = document.getElementById('phonebook-table');
 const phonebookTableBody = phonebookTable.getElementsByTagName('tbody')[0];
 const loadingAlert = document.getElementById('loading-alert');
-const loadingSpinner = document.getElementById('loading-spinner');
+// const loadingSpinner = document.getElementById('loading-spinner');
 
 function loadPhonebook(){
   phonebookTable.classList.add('d-none');
   loadingAlert.classList.add('d-none');
-  loadingSpinner.classList.remove('d-none');
+  // loadingSpinner.classList.remove('d-none');
 
   const abortController = new AbortController();
   const timer = setTimeout(() => {
@@ -30,13 +30,13 @@ function loadPhonebook(){
         const firstNameCol = document.createElement('td');
         firstNameCol.textContent = entry.firstName;
         row.appendChild(firstNameCol);
-        const birthDateCol = document.createElement('tr');
+        const birthDateCol = document.createElement('td');
         birthDateCol.textContent = entry.birthDate;
         row.appendChild(birthDateCol);
-        const phoneNumberCol = document.createElement('tr');
+        const phoneNumberCol = document.createElement('td');
         phoneNumberCol.textContent = entry.phoneNumber;
         row.appendChild(phoneNumberCol);
-        const emailAddressCol = document.createElement('tr');
+        const emailAddressCol = document.createElement('td');
         emailAddressCol.textContent = entry.emailAddress;
         row.appendChild(emailAddressCol);
         phonebookTableBody.appendChild(row);
@@ -49,7 +49,7 @@ function loadPhonebook(){
       console.error(error);
     })
     .finally(() => {
-      loadingSpinner.classList.add('d-none');
+      // loadingSpinner.classList.add('d-none');
       clearTimeout(timer);
     })
 }
@@ -57,26 +57,26 @@ function loadPhonebook(){
 loadPhonebook();
 
 const entryForm = document.getElementById('entry-form');
-const lastNameInput = document.getElementById('lastNameInput');
-const firstNameInput = document.getElementById('firstNameInput');
-const birthDateInput = document.getElementById('birthDateInput');
-const phoneNumberInput = document.getElementById('phoneNumberInput');
-const emailAddressInput = document.getElementById('emailAddressInput');
+const lastName = document.getElementById('lastName');
+const firstName = document.getElementById('firstName');
+const birthDate = document.getElementById('birthDate');
+const phoneNumber = document.getElementById('phoneNumber');
+const emailAddress = document.getElementById('emailAddress');
 const sendingFailure = document.getElementById('sending-failure');
 
 function sendForm(){
-  lastNameInput.setAttribute('disabled', true);
-  firstNameInput.setAttribute('disabled', true);
-  birthDateInput.setAttribute('disabled', true);
-  phoneNumberInput.setAttribute('disabled', true);
-  emailAddressInput.setAttribute('disabled', true);
+  lastName.setAttribute('disabled', true);
+  firstName.setAttribute('disabled', true);
+  birthDate.setAttribute('disabled', true);
+  phoneNumber.setAttribute('disabled', true);
+  emailAddress.setAttribute('disabled', true);
 
   const data = {
-    lastName: lastNameInput.value,
-    firstNameInput: firstNameInput.value,
-    birthDateInput: birthDateInput.value,
-    phoneNumberInput: phoneNumberInput.value,
-    emailAddressInput: emailAddressInput.value,
+    lastName: lastName.value,
+    firstName: firstName.value,
+    birthDate: birthDate.value,
+    phoneNumber: phoneNumber.value,
+    emailAddress: emailAddress.value,
   };
 
   const abortController = new AbortController();
@@ -106,11 +106,11 @@ function sendForm(){
       sendingFailure.classList.remove('d-none');
     })
     .finally(() => {
-      lastNameInput.removeAttribute('disabled');
-      firstNameInput.removeAttribute('disabled');
-      birthDateInput.removeAttribute('disabled');
-      phoneNumberInput.removeAttribute('disabled');
-      emailAddressInput.removeAttribute('disabled');
+      lastName.removeAttribute('disabled');
+      firstName.removeAttribute('disabled');
+      birthDate.removeAttribute('disabled');
+      phoneNumber.removeAttribute('disabled');
+      emailAddress.removeAttribute('disabled');
       clearTimeout(timer);
     });
 }
