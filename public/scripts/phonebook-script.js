@@ -5,12 +5,11 @@ const REQUEST_TIMEOUT = 10000;
 const phonebookTable = document.getElementById('phonebook-table');
 const phonebookTableBody = phonebookTable.getElementsByTagName('tbody')[0];
 const loadingAlert = document.getElementById('loading-alert');
-// const loadingSpinner = document.getElementById('loading-spinner');
+
 
 function loadPhonebook(){
   phonebookTable.classList.add('d-none');
   loadingAlert.classList.add('d-none');
-  // loadingSpinner.classList.remove('d-none');
 
   const abortController = new AbortController();
   const timer = setTimeout(() => {
@@ -49,7 +48,6 @@ function loadPhonebook(){
       console.error(error);
     })
     .finally(() => {
-      // loadingSpinner.classList.add('d-none');
       clearTimeout(timer);
     })
 }
